@@ -5,12 +5,12 @@ namespace backend\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Page;
+use common\models\News;
 
 /**
  * PageSearch represents the model behind the search form about `common\models\Page`.
  */
-class PageSearch extends Page
+class NewsSearch extends News
 {
     /**
      * @inheritdoc
@@ -38,7 +38,7 @@ class PageSearch extends Page
      */
     public function search($params)
     {
-        $query = Page::find();
+        $query = News::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

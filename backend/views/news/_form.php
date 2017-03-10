@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Page */
+/* @var $model common\models\News */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
@@ -39,11 +39,36 @@ use yii\bootstrap\ActiveForm;
         ]);
     ?>
 
-    <?php echo $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'anons')->widget(
+        \yii\imperavi\Widget::className(),
+        [
+            'plugins' => ['fullscreen', 'fontcolor', 'video'],
+            'options'=>[
+                'minHeight'=>400,
+                'maxHeight'=>400,
+                'buttonSource'=>true,
+                'imageUpload'=>Yii::$app->urlManager->createUrl(['/file-storage/upload-imperavi'])
+            ]
+        ]
+    ) ?>
+
+    <?php echo $form->field($model, 'clinic_id')->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'view_info_clinic')->checkbox() ?>
+
+    <?php echo $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
     <?php echo $form->field($model, 'published_at')->widget(
+        DateTimeWidget::className(),
+        [
+            'phpDatetimeFormat' => 'yyyy-MM-dd\'T\'HH:mm:ssZZZZZ'
+        ]
+    ) ?>
+
+    <?php echo $form->field($model, 'expiries')->widget(
         DateTimeWidget::className(),
         [
             'phpDatetimeFormat' => 'yyyy-MM-dd\'T\'HH:mm:ssZZZZZ'

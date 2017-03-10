@@ -9,7 +9,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\models\Page;
+use common\models\News;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -17,7 +17,7 @@ class PageController extends Controller
 {
     public function actionView($slug)
     {
-        $model = Page::find()->where(['slug'=>$slug, 'status'=>Page::STATUS_PUBLISHED])->one();
+        $model = News::find()->where(['slug'=>$slug, 'status'=>News::STATUS_PUBLISHED])->one();
         if (!$model) {
             throw new NotFoundHttpException(Yii::t('frontend', 'Page not found'));
         }

@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel \backend\models\search\PageSearch */
+/* @var $searchModel \backend\models\search\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Pages');
+$this->title = Yii::t('common', 'News');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Page',
+    'modelClass' => Yii::t('common', 'News'),
 ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 

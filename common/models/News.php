@@ -19,7 +19,7 @@ use yii\db\ActiveRecord;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class Page extends ActiveRecord
+class News extends ActiveRecord
 {
     const STATUS_DRAFT = 0;
     const STATUS_PUBLISHED = 1;
@@ -29,7 +29,7 @@ class Page extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%page}}';
+        return '{{%news}}';
     }
 
     /**
@@ -60,7 +60,7 @@ class Page extends ActiveRecord
             [['slug'], 'unique'],
             [['slug', 'picture_src'], 'string', 'max' => 2048],
             [['title'], 'string', 'max' => 512],
-            [['view'], 'string', 'max' => 255],
+            [['anons'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 200],
             [['published_at'], 'default', 'value' => function () {
                 return date(DATE_ISO8601);
@@ -80,12 +80,12 @@ class Page extends ActiveRecord
             'slug' => Yii::t('common', 'Slug'),
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
-            'view' => Yii::t('common', 'Page View'),
-            'picture_src' => Yii::t('common', 'Picture Path'),
+            'anons' => Yii::t('common', 'Anons'),
+            'picture_src' => Yii::t('common', 'Image Anons'),
             'clinic_id' => Yii::t('common', 'Clinic'),
-            'view_info_clinic' => Yii::t('common', 'View Info Clinic'),
-            'keywords' => Yii::t('common', 'Keywords'),
-            'description' => Yii::t('common', 'Description'),
+            'view_info_clinic' => Yii::t('backend', 'View Info Clinic'),
+            'keywords' => Yii::t('backend', 'Keywords'),
+            'description' => Yii::t('backend', 'Description'),
             'status' => Yii::t('common', 'Active'),
             'published_at' => Yii::t('common', 'Published At'),
             'expiries' => Yii::t('common', 'Expiries'),

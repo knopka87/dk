@@ -1,7 +1,7 @@
 <?php
 /**
  * @var $this \yii\web\View
- * @var $model \common\models\Page
+ * @var $model \common\models\News
  */
 $this->title = $model->title;
 ?>

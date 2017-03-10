@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Page */
+/* @var $model common\models\News */
 
 $this->title = Yii::t('backend', 'Update {modelClass}: ', [
-    'modelClass' => 'Page',
+    'modelClass' => Yii::t('common', 'News'),
 ]) . ' ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Pages'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
