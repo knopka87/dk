@@ -60,7 +60,7 @@ class m150725_192740_seed_data extends Migration
             'slug' => 'about',
             'title' => 'About',
             'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'status' => \common\models\News::STATUS_PUBLISHED,
+            'status' => \common\models\Page::STATUS_PUBLISHED,
             'created_at' => time(),
             'updated_at' => time(),
         ]);
