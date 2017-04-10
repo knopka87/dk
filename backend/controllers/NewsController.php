@@ -54,7 +54,7 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['page/index']);
+            return $this->redirect(['news/index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -73,7 +73,7 @@ class NewsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['page/index']);
+            return $this->redirect(['news/index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -91,7 +91,7 @@ class NewsController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['page/index']);
+        return $this->redirect(['news/index']);
     }
 
     /**

@@ -54,7 +54,7 @@ class ArticleController extends Controller
         $model = new Article();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['article/index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -74,7 +74,7 @@ class ArticleController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['article/index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -93,7 +93,7 @@ class ArticleController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['article/index']);
     }
 
     /**
