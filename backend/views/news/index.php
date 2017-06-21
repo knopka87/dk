@@ -27,11 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'grid-view table-responsive'
         ],
         'columns' => [
-            'id',
+            //'id',
             'title',
             'slug',
-            'status',
-
+	        [
+		        'attribute'=>'status',
+		        'filter'=>array("1"=>"Активно","0"=>"Не активно"),
+		        'format' => 'text',
+		        'content'=> function($data){
+				        return ($data->status===1?"Активно":"Не активно");
+			        }
+	        ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template'=>'{update} {delete}'

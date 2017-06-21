@@ -22,7 +22,6 @@ class PageController extends Controller
             throw new NotFoundHttpException(Yii::t('frontend', 'Page not found'));
         }
 
-        $viewFile = $model->view ?: 'view';
-        return $this->render($viewFile, ['model'=>$model]);
+        return $this->render('view', ['model'=>$model]);
     }
 }

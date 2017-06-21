@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use trntv\filekit\behaviors\UploadBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -14,8 +15,11 @@ use yii\db\ActiveRecord;
  * @property string $slug
  * @property string $title
  * @property string $body
- * @property string $view
+ * @property string $anons
+ * @property string $anons_img
  * @property integer $status
+ * @property string $keywords
+ * @property string $description
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -23,6 +27,8 @@ class Page extends ActiveRecord
 {
     const STATUS_DRAFT = 0;
     const STATUS_PUBLISHED = 1;
+
+	public $anons_img;
 
     /**
      * @inheritdoc
@@ -44,7 +50,13 @@ class Page extends ActiveRecord
                 'attribute' => 'title',
                 'ensureUnique' => true,
                 'immutable' => true
-            ]
+            ],
+	        [
+		        'class' => UploadBehavior::className(),
+		        'attribute' => 'anons_img',
+		        'pathAttribute' => 'anons_img_path',
+		        'baseUrlAttribute' => 'anons_img_base_url'
+	        ]
         ];
     }
 
@@ -55,12 +67,15 @@ class Page extends ActiveRecord
     {
         return [
             [['title', 'body'], 'required'],
-            [['body'], 'string'],
+            [['body','keywords'], 'string'],
             [['status'], 'integer'],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 2048],
-            [['title'], 'string', 'max' => 512],
-            [['view'], 'string', 'max' => 255]
+	        [['title'], 'string', 'max' => 512],
+            [['anons'], 'string', 'max' => 255],
+	        [['anons_img_path', 'anons_img_base_url'], 'string', 'max' => 1024],
+	        [['anons_img'], 'safe'],
+            [['description'], 'string', 'max' => 200],
         ];
     }
 
@@ -74,8 +89,11 @@ class Page extends ActiveRecord
             'slug' => Yii::t('common', 'Slug'),
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
-            'view' => Yii::t('common', 'Page View'),
-            'status' => Yii::t('common', 'Active'),
+	        'anons' => Yii::t('common', 'Anons'),
+	        'anons_img' => Yii::t('common', 'Image Anons'),
+	        'keywords' => Yii::t('backend', 'Keywords'),
+	        'description' => Yii::t('backend', 'Description'),
+	        'status' => Yii::t('common', 'Active'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
         ];
